@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: Wiki
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrateur
+Implementation-Vendor-Id: com.ambre
+Build-Jdk: 1.8.0_211
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/Wiki
+Created-By: Maven Integration for Eclipse
+Main-Class: wiki-boot.Application
+

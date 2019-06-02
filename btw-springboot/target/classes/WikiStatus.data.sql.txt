@@ -1,0 +1,2 @@
+INSERT INTO wiki_status (id, status)
+	VALUES (1, "Invalide"), (2, "A corriger"), (3, "Corrige"), (4, "Valide"), (5, "Archive"), (6, "Correction en cours");
