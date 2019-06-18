@@ -56,9 +56,7 @@ public class User implements Serializable {
         @JsonIgnore
         @OneToMany (targetEntity = Comment.class, mappedBy = "user")        
         private Set<Comment> comment;
-        
-       
-    
+
         @ManyToOne (targetEntity = UserRole.class)
         @JoinColumn (name="user_role_id", nullable=true)
         private UserRole userRole;
@@ -68,16 +66,16 @@ public class User implements Serializable {
             joinColumns={@JoinColumn(name="correcteur_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="wiki_id", referencedColumnName="id", unique = true)}
         )
-        private Set<Wiki> corrections;
+        private Set<Correction> corrections;
         
         @Transient
         String Token; 
 
-    public Set<Wiki> getCorrections() {
+    public Set<Correction> getCorrections() {
         return corrections;
     }
 
-    public void setCorrections(Set<Wiki> corrections) {
+    public void setCorrections(Set<Correction> corrections) {
         this.corrections = corrections;
     }
      

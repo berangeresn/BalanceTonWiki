@@ -5,11 +5,13 @@
  */
 package com.ambre.wiki.service;
 
+import com.ambre.wiki.entities.User;
 import com.ambre.wiki.repositories.WikiRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ambre.wiki.entities.Wiki;
+import java.util.ArrayList;
 /** 
  * 
  *
@@ -21,8 +23,8 @@ public class WikiService {
     @Autowired
     WikiRepository wikiRepo;
     
-    public Wiki createWiki(String title, String content, String user_id) {
-       return wikiRepo.createWiki(title, content, user_id);
+    public Wiki createWiki(String title, String content, User u) {
+       return wikiRepo.createWiki(title, content, u);
     }
     
     public Wiki getWikiById(Long id) {
@@ -37,12 +39,19 @@ public class WikiService {
     return wikiRepo.deleteWiki(id);
     }	
     
-    public Wiki updateWiki(String id, String title, String content, String user_id, String category_id){
-    return wikiRepo.updateWiki(id, title, content, user_id, category_id);
+    public Wiki updateWiki(Long id, String title, String content,User u, String category_id){
+    return wikiRepo.updateWiki(id, title, content,u, category_id);
     }
     
     public List<Wiki> searchWiki(String keyword){
         return wikiRepo.searchWiki(keyword);
     }    
-        
+    
+    public List<Wiki> findValidWikis(){
+        return wikiRepo.findValidWikis();
+    }
+    public List<Wiki> findWikisByUser(User u){
+        return wikiRepo.findWikisByUser(u);
+    }
+    
 }

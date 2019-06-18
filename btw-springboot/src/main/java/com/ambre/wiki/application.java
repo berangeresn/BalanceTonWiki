@@ -8,8 +8,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  *
  * @author Administrateur
  */
-    @SpringBootApplication
-    @ServletComponentScan
+@SpringBootApplication
+@ServletComponentScan
 public class application {
     public static void main(String[] args) {
         SpringApplication.run(application.class, args);

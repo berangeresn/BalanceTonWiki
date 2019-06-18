@@ -4,7 +4,6 @@ package com.ambre.wiki.repositories;
 import com.ambre.wiki.entities.User;
 import com.ambre.wiki.entities.UserRole;
 import com.ambre.wiki.helpers.EncryptPasswordHelper;
-import com.ambre.wiki.repositories.BaseRepository;
 
 import javax.persistence.Query;
 import javax.transaction.Transactional;

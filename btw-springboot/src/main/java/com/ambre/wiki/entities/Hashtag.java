@@ -32,34 +32,40 @@ public class Hashtag implements Serializable {
             joinColumns={@JoinColumn(name="hashtag_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="comment_id", referencedColumnName="id", unique = true)}
         )
+	private Set<Comment> commentHashtag;
+
+    public Hashtag() { }
+
     
-     private Set<Comment> comment_hashtag;
-
-    public Set<Comment> getComment_hashtag() {
-        return comment_hashtag;
-    }
-
-    public void setComment_hashtag(Set<Comment> comment_hashtag) {
-        this.comment_hashtag = comment_hashtag;
-    }
-     
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
     public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Override
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Set<Comment> getCommentHashtag() {
+		return commentHashtag;
+	}
+
+	public void setCommentHashtag(Set<Comment> commentHashtag) {
+		this.commentHashtag = commentHashtag;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
     public String toString() {
         return "com.mycompany.wiki.entities.Hashtage[ id=" + id + " ]";
     }

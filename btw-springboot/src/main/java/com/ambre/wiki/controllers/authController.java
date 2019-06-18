@@ -38,7 +38,7 @@ public class authController {
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
     
-     @RequestMapping(value="/register", method = RequestMethod.POST)
+    @RequestMapping(value="/register", method = RequestMethod.POST)
     public ResponseEntity<User>createUser(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String emailAddress, @RequestParam String password, @RequestParam String user_role) {
     return new ResponseEntity<User>(userService.createUser(lastName, firstName, emailAddress, password, user_role), HttpStatus.OK); 
     }

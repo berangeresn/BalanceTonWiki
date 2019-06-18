@@ -21,14 +21,14 @@ public class NewsController {
     @Autowired
     private NewsService myService;
 
-	@PostMapping(path="/add") 
+	@PostMapping(path="/v1/admin/add") 
 	public @ResponseBody News addNews (@RequestParam String title) {
 		News myNews = new News();
 		myNews.setTitle(title);
 		return myService.addNews(myNews);
 	}
 
-	@GetMapping(path="/{id}")
+	@GetMapping(path="/v1/admin/{id}")
 	public @ResponseBody News findNewsById(@PathVariable("id") Long id) {
 		return myService.findNewsById(id);
 	}
@@ -38,19 +38,19 @@ public class NewsController {
 		return myService.findAllNews();
 	}
 
-	@GetMapping(path="/last")
+	@GetMapping(path="/v1/contri/last")
 	public @ResponseBody News findLastNews() {
 		return myService.findLastNews();
 	}
 	
-	@PutMapping(path="/update/{id}")
+	@PutMapping(path="/v1/admin/update/{id}")
 	public @ResponseBody News updateNews(@PathVariable("id") Long id, @RequestParam String title) {
 		News myNews = new News();
 		myNews.setTitle(title);
 		return myService.updateNews(id, myNews);
 	}
 
-	@DeleteMapping(path="/delete/{id}")
+	@DeleteMapping(path="/v1/admin/delete/{id}")
 	public @ResponseBody Boolean deleteNews(@PathVariable("id") Long id) {
 		return myService.deleteNews(id);
 	}		

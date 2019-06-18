@@ -17,21 +17,17 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpResponse;
+//import java.net.http.HttpResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.security.auth.login.FailedLoginException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
 /**
  *
  * @author Administrateur
  */
-@WebFilter(filterName = "JwtAuthenticationFilter", urlPatterns = {"/v1/*"})
+@WebFilter(filterName = "JwtAuthenticationFilter", urlPatterns = {"/wikis/v1/*","/category/v1/*","/v1/*","/news/v1/*"})
 public class JwtAuthenticationFilter implements Filter {
     
     private static final java.util.logging.Logger LOG = Logger.getLogger( JwtAuthenticationFilter.class.getName() );
@@ -63,8 +59,9 @@ public class JwtAuthenticationFilter implements Filter {
 
             String jwt = getBearerToken( httpRequest );
             
-         
+            System.out.println("je suis dans le filtre");
             if ( jwt != null && !jwt.isEmpty() ) {
+                System.out.println( jwt);
                 User myUser = userService.getUserByEmail((String)TOKEN_MANAGER.parseToken(jwt).getBody().get("sub"));
                     if(myUser!=null){
                     loggedIn = true;
@@ -80,7 +77,10 @@ public class JwtAuthenticationFilter implements Filter {
                              }
                         } if (valide) {
                             servletRequest.setAttribute("user", myUser);
-                            filterChain.doFilter( servletRequest, servletResponse );
+                            
+                            System.out.println("LOGGING");
+                            System.out.println(servletRequest.getAttribute("user"));
+                            filterChain.doFilter(servletRequest, servletResponse );
                         }else {
                             httpResponse.setContentLength( 0 );
                             httpResponse.setStatus(STATUS_CODE_FORBIDDEN);

@@ -29,42 +29,42 @@ public class CategoryController {
     @Autowired
     WikiService wikiService;
     
-    @PostMapping(path="/new") 
+    @PostMapping(path="/v1/admin/new") 
 	public @ResponseBody Category newCategory (@RequestParam String category) {
 		Category cat = new Category();
 		cat.setCategory(category);
 		return catService.newCategory(category);
 	}
     
-    @GetMapping(path="/{id}")
+    @GetMapping(path="/v1/admin/{id}")
         public @ResponseBody Category getById(@PathVariable("id") Long id) {
             return catService.getById(id);
         }
     
-    @GetMapping(path="/all")
+    @GetMapping(path="/v1/contri/all")
 	public @ResponseBody Iterable<Category> getAllCategories() {
 		return catService.getAllCategories();
         }
     
-    @PutMapping(path="/update/{id}")
+    @PutMapping(path="/v1/admin/update/{id}")
         public @ResponseBody Category updateCategory(@PathVariable("id") String id, @RequestParam String category) {
             Category cat = new Category();
             cat.setCategory(category);
             return catService.updateCategory(id, category);
     }
     
-    @DeleteMapping(path="/delete/{id}")
+    @DeleteMapping(path="/v1/admin/delete/{id}")
 	public @ResponseBody Boolean deleteCategory(@PathVariable("id") Long id) {
 		return catService.deleteCategory(id);
 	}
     
-    @PutMapping(path="/add/{categoryid}/wiki/{wikiid}")
+    @PutMapping(path="v1/contri/add/{categoryid}/wiki/{wikiid}")
     public @ResponseBody boolean addCategoryToWiki (@PathVariable("categoryid") String CategoryId, @PathVariable("wikiid") Long WikiId){
         Wiki wiki = wikiService.getWikiById(WikiId);
         return catService.addCategoryToWiki(CategoryId, wiki);
     }
     
-    @PutMapping(path="/remove/{categoryid}/wiki/{wikiid}")
+    @PutMapping(path="v1/admin/remove/{categoryid}/wiki/{wikiid}")
     public @ResponseBody boolean removeCategoryFromWiki (@PathVariable("categoryid") String CategoryId, @PathVariable("wikiid") Long WikiId){
         Wiki wiki = wikiService.getWikiById(WikiId);
         return catService.removeCategoryFromWiki(CategoryId, wiki);

@@ -66,14 +66,14 @@ public class Comment implements Serializable {
         private Set<Comment> comment;
         
         
-        @ManyToMany(targetEntity = Hashtag.class, mappedBy = "comment_hashtag")
-        private Set<User> hashtags;
+        @ManyToMany(targetEntity = Hashtag.class, mappedBy = "commentHashtag")
+        private Set<Hashtag> hashtags;
 
-    public Set<User> getHashtags() {
+    public Set<Hashtag> getHashtags() {
         return hashtags;
     }
 
-    public void setHashtags(Set<User> hashtags) {
+    public void setHashtags(Set<Hashtag> hashtags) {
         this.hashtags = hashtags;
     }
     

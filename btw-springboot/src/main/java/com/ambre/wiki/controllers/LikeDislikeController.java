@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/like")
+@RequestMapping("/v1/contri/like")
 public class LikeDislikeController {
     @Autowired
     LikeDislikeService likedislike;

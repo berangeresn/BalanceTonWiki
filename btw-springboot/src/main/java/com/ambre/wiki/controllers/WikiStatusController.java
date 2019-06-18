@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/wikistatus")
+@RequestMapping("/v1/wikistatus")
 public class WikiStatusController {
 
 	@Autowired
@@ -26,23 +26,23 @@ public class WikiStatusController {
 	private WikiService myWikiService;
 	
 	
-	@GetMapping(path="/{id}")
+	@GetMapping(path="/admin/{id}")
 	public @ResponseBody WikiStatus findNewsById(@PathVariable("id") Long id) {
 		return myService.findWikiStatusById(id);
 	}
 
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<WikiStatus> findAllNews() {
+	@GetMapping(path="/admin/all")
+	public @ResponseBody Iterable<WikiStatus> findAllWikiStatus() {
 		return myService.findAllWikiStatus();
 	}
 	
-	@PutMapping(path="/{id}/wiki/{wikiid}")
+	@PutMapping(path="/corrector/{id}/wiki/{wikiid}")
 	public @ResponseBody boolean updateStatusOfWiki(@PathVariable("id") Long id, @PathVariable("wikiid") Long wikiId) {
 		Wiki myWiki = myWikiService.getWikiById(wikiId);
 		return myService.updateStatusOfWiki(myWiki, id);
 	}
 	
-        @GetMapping(path="/wikis/{id}")
+        @GetMapping(path="/corrector/wikis/{id}")
 	public @ResponseBody List<Wiki> findWikiByStatus(@PathVariable("id") String statusId) {
 		return myService.findWikiByStatus(statusId);
 	}

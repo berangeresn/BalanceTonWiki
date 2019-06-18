@@ -68,19 +68,19 @@ public class Wiki implements Serializable {
     @JoinColumn (name="wiki_status_id", nullable=true)
     private WikiStatus wikistatus;
 
-    @ManyToMany(targetEntity = User.class, mappedBy = "corrections")
-    private Set<User> correcteurs; 
+    @OneToMany(targetEntity = Correction.class, mappedBy = "wiki")
+    private Set<Correction> wikiCorrect; 
 
-    public Set<User> getCorrecteurs() {
-        return correcteurs;
+    public Set<Correction> getCorrecteurs() {
+        return wikiCorrect;
     }
 
     public void setCategories(Set<Category> categories) {
         this.category = categories;
     }
 
-    public void setCorrecteurs(Set<User> correcteurs) {
-        this.correcteurs = correcteurs;
+    public void setCorrecteurs(Set<Correction> correcteurs) {
+        this.wikiCorrect = correcteurs;
     }
 
     public Set<Likes> getLikes() {

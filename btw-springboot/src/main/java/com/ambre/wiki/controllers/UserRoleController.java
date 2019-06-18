@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/userrole")
+@RequestMapping("/v1/admin/userrole")
 public class UserRoleController {
 
 	@Autowired

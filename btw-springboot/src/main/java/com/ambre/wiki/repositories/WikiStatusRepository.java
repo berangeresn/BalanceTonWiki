@@ -83,5 +83,5 @@ public class WikiStatusRepository extends BaseRepository {
         Query q = em.createQuery("SELECT w FROM "+Wiki.class.getName()+" w JOIN "+WikiStatus.class.getName()+" s ON s.id=w.wikistatus.id WHERE w.wikistatus.id =:id_status").setParameter("id_status", Long.valueOf(statusId));
         return (List<Wiki>)q.getResultList();        
     }
-     
+
 }
